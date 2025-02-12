@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:rowCount="4"
+    android:columnCount="4"
+    android:padding="4dp"
+    android:background="#eeeeee">
+
+    <!-- Row 1 -->
+    <Button
+        android:id="@+id/topLeft"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        android:layout_margin="2dp"
+        android:background="@drawable/button_border"
+        android:onClick="onClickBottomRow"
+        android:text="Top Left" />
+
+    <Button
+        android:id="@+id/topCenterLeft"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        android:text="Top Center Left"
+        android:layout_margin="2dp"
+        android:background="@drawable/button_border"
+        />
+
+    <Button
+        android:id="@+id/topCenterRight"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        android:text="Top Center Right"
+        android:layout_margin="2dp"
+        android:background="@drawable/button_border"
+        />
+
+    <Button
+        android:id="@+id/topRight"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        android:text="Top Right"
+        android:layout_margin="2dp"
+        android:background="@drawable/button_border"
+        />
+
+    <!-- Row 2 -->
+    <Button
+        android:id="@+id/midTopLeft"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        android:text="Mid Top Left"
+        android:layout_margin="2dp"
+        android:background="@drawable/button_border"
+        />
+
+    <Button
+        android:id="@+id/midTopCenterLeft"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        android:text="Mid Top Center Left"
+        android:layout_margin="2dp"
+        android:background="@drawable/button_border"
+        />
+
+    <Button
+        android:id="@+id/midTopCenterRight"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        android:text="Mid Top Center Right"
+        android:layout_margin="2dp"
+        android:background="@drawable/button_border"
+        />
+
+    <Button
+        android:id="@+id/midTopRight"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        android:text="Mid Top Right"
+        android:layout_margin="2dp"
+        android:background="@drawable/button_border"
+        />
+
+    <!-- Row 3 -->
+    <Button
+        android:id="@+id/midBottomLeft"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        android:text="Mid Bottom Left"
+        android:layout_margin="2dp"
+        android:background="@drawable/button_border"
+        />
+
+    <Button
+        android:id="@+id/midBottomCenterLeft"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        android:text="Mid Bottom Center Left"
+        android:layout_margin="2dp"
+        android:background="@drawable/button_border"
+        />
+
+    <Button
+        android:id="@+id/midBottomCenterRight"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        android:text="Mid Bottom Center Right"
+        android:layout_margin="2dp"
+        android:background="@drawable/button_border"
+        />
+
+    <Button
+        android:id="@+id/midBottomRight"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        android:text="Mid Bottom Right"
+        android:layout_margin="2dp"
+        android:background="@drawable/button_border"
+        />
+
+    <!-- Row 4 -->
+    <Button
+        android:id="@+id/bottomLeft"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        android:text="Bottom Left"
+        android:layout_margin="2dp"
+        android:background="@drawable/button_border"
+        />
+
+    <Button
+        android:id="@+id/bottomCenterLeft"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        android:text="Bottom Center Left"
+        android:layout_margin="2dp"
+        android:background="@drawable/button_border"
+        />
+
+    <Button
+        android:id="@+id/bottomCenterRight"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        android:text="Bottom Center Right"
+        android:layout_margin="2dp"
+        android:background="@drawable/button_border"
+        />
+
+    <Button
+        android:id="@+id/bottomRight"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        android:text="Bottom Right"
+        android:layout_margin="2dp"
+        android:background="@drawable/button_border"
+        />
+
+</GridLayout>
