@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -68,6 +67,38 @@ public class HomeFragment extends Fragment {
     public void wrongTile(View v) {
         Log.d("buttons", "wrong tile!");
         Log.d("buttons", "you lost");
+
+        View root = binding.getRoot();
+
+        for (int[] col:buttonIds) {
+            for (int buttonId:col) {
+                Button button = root.findViewById(buttonId);
+                button.setBackgroundColor(Color.WHITE);
+                button.setTextColor(Color.WHITE);
+                button.setOnClickListener(this::nothing);
+            }
+        }
+
+        Button midTopCenterLeft = root.findViewById(R.id.midTopCenterLeft);
+        Button midTopCenterRight = root.findViewById(R.id.midTopCenterRight);
+        
+        midTopCenterLeft.setTextColor(Color.DKGRAY);
+        midTopCenterRight.setTextColor(Color.DKGRAY);
+
+        midTopCenterLeft.setText("Steps \n" + playthrough.getPoints());
+        midTopCenterRight.setText("Time left \n" + playthrough.getFormattedTimeLeft());
+
+        Button leftBtn = root.findViewById(R.id.midBottomCenterLeft);
+        Button rightBtn = root.findViewById(R.id.midBottomCenterRight);
+
+        leftBtn.setBackgroundColor(Color.DKGRAY);
+        rightBtn.setBackgroundColor(Color.DKGRAY);
+
+        leftBtn.setText("PLAY");
+        rightBtn.setText("AGAIN");
+
+        leftBtn.setOnClickListener(this::restart);
+        rightBtn.setOnClickListener(this::restart);
     }
 
     public void updateTiles() {
@@ -110,5 +141,38 @@ public class HomeFragment extends Fragment {
         stepsButton.setText("Steps \n" + playthrough.getPoints());
         Button timeLeftButton = root.findViewById(R.id.topRight);
         timeLeftButton.setText("Time left \n" + playthrough.getFormattedTimeLeft());
+    }
+
+    public void nothing(View v) {
+
+    }
+
+    public void restart(View v) {
+
+        View root = binding.getRoot();
+
+        tiles = new Tiles();
+        playthrough = new Playthrough();
+        tiles.setupInitTiles();
+
+
+
+        Button midTopCenterLeft = root.findViewById(R.id.midTopCenterLeft);
+        Button midTopCenterRight = root.findViewById(R.id.midTopCenterRight);
+        
+        midTopCenterLeft.setText("");
+        midTopCenterRight.setText("");
+
+        Button leftBtn = root.findViewById(R.id.midBottomCenterLeft);
+        Button rightBtn = root.findViewById(R.id.midBottomCenterRight);
+
+        leftBtn.setBackgroundColor(Color.DKGRAY);
+        rightBtn.setBackgroundColor(Color.DKGRAY);
+
+        leftBtn.setText("");
+        rightBtn.setText("");
+
+
+        updateTiles();
     }
 }
