@@ -1,5 +1,6 @@
 package com.example.myfirstapplication.ui.home;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,11 +15,24 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.myfirstapplication.R;
 import com.example.myfirstapplication.databinding.FragmentHomeBinding;
+import com.example.myfirstapplication.ui.game.Tiles;
+
+import java.util.Iterator;
 
 
 public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
+
+    private final int[][] buttonIds = {
+            {R.id.topLeft, R.id.topCenterLeft, R.id.topCenterRight, R.id.topRight},
+            {R.id.midTopLeft, R.id.midTopCenterLeft, R.id.midTopCenterRight, R.id.midTopRight},
+            {R.id.midBottomLeft, R.id.midBottomCenterLeft, R.id.midBottomCenterRight, R.id.midBottomRight},
+            {R.id.bottomLeft, R.id.bottomCenterLeft, R.id.bottomCenterRight, R.id.bottomRight}
+    };
+    Tiles tiles = new Tiles(12345L);
+
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -28,8 +42,9 @@ public class HomeFragment extends Fragment {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        Button topLeftButton = root.findViewById(R.id.topLeft);
-        topLeftButton.setOnClickListener(this::onClickBottomRow);
+        tiles.setupInitTiles();
+        updateTiles();
+
 
         return root;
     }
@@ -40,8 +55,44 @@ public class HomeFragment extends Fragment {
         binding = null;
     }
 
-    public void onClickBottomRow(View v) {
-        Log.d("Buttons", "pressed!");
+    public void correctTile(View v) {
+        Log.d("buttons", "correct tile!");
+        tiles.stepForward();
+        updateTiles();
 
+    }
+
+    public void wrongTile(View v) {
+        Log.d("buttons", "wrong tile!");
+        Log.d("buttons", "you lost");
+    }
+
+    public void updateTiles() {
+
+        View root = binding.getRoot();
+
+        Iterator<Tiles.Column> itr = tiles.getColQueue().iterator();
+        int j = 0;
+        while (itr.hasNext()) {
+
+            Tiles.Column col = itr.next();
+            int indexOfBlackTile = col.getIndexOfBlackTile();
+            Log.d("INFO", "" + indexOfBlackTile);
+
+            for (int i = 0; i<4; i++) {
+                int buttonID = buttonIds[j][i];
+                Button button = root.findViewById(buttonID);
+                if (i == indexOfBlackTile) {
+                    button.setOnClickListener(this::correctTile);
+                    button.setBackgroundColor(Color.DKGRAY);
+                }
+                else {
+                    button.setOnClickListener(this::wrongTile);
+                    button.setBackgroundColor(Color.WHITE);
+                }
+            }
+            j++;
+
+        }
     }
 }
