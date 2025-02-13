@@ -15,6 +15,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.myfirstapplication.R;
 import com.example.myfirstapplication.databinding.FragmentHomeBinding;
+import com.example.myfirstapplication.ui.game.Playthrough;
 import com.example.myfirstapplication.ui.game.Tiles;
 
 import java.util.Iterator;
@@ -31,7 +32,7 @@ public class HomeFragment extends Fragment {
             {R.id.bottomLeft, R.id.bottomCenterLeft, R.id.bottomCenterRight, R.id.bottomRight}
     };
     Tiles tiles = new Tiles(12345L);
-
+    Playthrough playthrough = new Playthrough();
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -56,8 +57,10 @@ public class HomeFragment extends Fragment {
     }
 
     public void correctTile(View v) {
-        Log.d("buttons", "correct tile!");
+        playthrough.incrementPoints();
+        Log.d("buttons", "correct tile!" + playthrough.getPoints());
         tiles.stepForward();
+
         updateTiles();
 
     }
@@ -80,19 +83,32 @@ public class HomeFragment extends Fragment {
             Log.d("INFO", "" + indexOfBlackTile);
 
             for (int i = 0; i<4; i++) {
-                int buttonID = buttonIds[j][i];
+                int buttonID = buttonIds[3-j][i];
                 Button button = root.findViewById(buttonID);
                 if (i == indexOfBlackTile) {
                     button.setOnClickListener(this::correctTile);
                     button.setBackgroundColor(Color.DKGRAY);
+                    button.setTextColor(Color.WHITE);
                 }
                 else {
                     button.setOnClickListener(this::wrongTile);
                     button.setBackgroundColor(Color.WHITE);
+                    button.setTextColor(Color.DKGRAY);
                 }
             }
             j++;
-
         }
+        playthrough.checkCheckPoint();
+        displayStats();
+    }
+
+    public void displayStats() {
+
+        View root = binding.getRoot();
+
+        Button stepsButton = root.findViewById(R.id.topLeft);
+        stepsButton.setText("Steps \n" + playthrough.getPoints());
+        Button timeLeftButton = root.findViewById(R.id.topRight);
+        timeLeftButton.setText("Time left \n" + playthrough.getFormattedTimeLeft());
     }
 }
