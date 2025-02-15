@@ -1,15 +1,21 @@
 package com.example.myfirstapplication.ui.game;
 
 public class Playthrough {
+    private String player = "Isak";
 
     private int points;
-    Long startTime;
-    Long checkPoints;
+    private Long startTime;
+    private Long checkPoints;
 
     public Playthrough() {
         points = 0;
         startTime = System.currentTimeMillis();
         checkPoints = 0L;
+    }
+    public Playthrough(String player, int points, Long startTime) {
+        this.player = player;
+        this.points = points;
+        this.startTime = startTime;
     }
 
     public void incrementPoints() {
@@ -20,6 +26,12 @@ public class Playthrough {
     }
     public Long getTimeLeft() {
         return startTime - System.currentTimeMillis() + 10000 + checkPoints * 10000;
+    }
+    public Long getStartTime() {
+        return startTime;
+    }
+    public String getPlayer() {
+        return player;
     }
     private String formatTime(long millis) {
         long seconds = millis / 1000;
@@ -34,5 +46,4 @@ public class Playthrough {
         }
 
     }
-
 }

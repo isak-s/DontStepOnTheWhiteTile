@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.myfirstapplication.R;
 import com.example.myfirstapplication.databinding.FragmentHomeBinding;
+import com.example.myfirstapplication.ui.game.CsvHandler;
 import com.example.myfirstapplication.ui.game.Playthrough;
 import com.example.myfirstapplication.ui.game.Tiles;
 
@@ -96,6 +97,7 @@ public class HomeFragment extends Fragment {
 
         leftBtn.setText("PLAY");
         rightBtn.setText("AGAIN");
+        CsvHandler.saveToFile(requireContext(), playthrough);
 
         leftBtn.setOnClickListener(this::restart);
         rightBtn.setOnClickListener(this::restart);
